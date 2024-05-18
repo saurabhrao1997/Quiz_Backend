@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const mongoConnection = require("./MongoDb/MongoConnection")
 const cors = require("cors")
-const port = 3000
+const port = process.env.PORT || 3000
 require("dotenv").config()
 
 // route import 
@@ -15,17 +15,17 @@ const bodyParser = require("body-parser")
 app.use(cors({origin:"http://localhost:5173"}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-app.use((error,req,res,next)=>{
+// app.use((error,req,res,next)=>{
     
-    error.statusCode = error?.statusCode || 500;
-    error.message = error?.message || "some thing went wrong"
-    error.extraDetails = error?.extraDetails || "error"
-   return res.status(error.statusCode).json({
-        status:error.statusCode,
-        Message:error.message,
-        Details:error.extraDetails
-    })
-})
+//     error.statusCode = error?.statusCode || 500;
+//     error.message = error?.message || "some thing went wrong"
+//     error.extraDetails = error?.extraDetails || "error"
+//    return res.status(error.statusCode).json({
+//         status:error.statusCode,
+//         Message:error.message,
+//         Details:error.extraDetails
+//     })
+// })
 
 
 
@@ -40,11 +40,20 @@ app.use((error,req,res,next)=>{
 mongoConnection()
 
 // routes
+app.get("/",()=>{
+   result.send("Hello welcome to my heroku page")
+})
+app.get("/home",()=>{
+  result.send("Hello welcome to my heroku home page")
+})
+app.get("/about",()=>{
+  result.send("Hello welcome to my heroku about page")
+})
 
-app.use("/api/v1",register)
-app.use("/api/v1",login)
-app.use("/api/v1",topics)
-app.use("/api/v1",result)
+// app.use("/api/v1",register)
+// app.use("/api/v1",login)
+// app.use("/api/v1",topics)
+// app.use("/api/v1",result)
 
 
 
