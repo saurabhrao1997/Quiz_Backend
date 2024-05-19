@@ -40,20 +40,20 @@ app.use(bodyParser.urlencoded({extended:true}))
 mongoConnection()
 
 // routes
-app.get("/",(req,res)=>{
-   res.send("Hello welcome to my heroku page")
-})
-app.get("/home",(req,res)=>{
-  res.send("Hello welcome to my heroku home page")
-})
-app.get("/about",(req,res)=>{
-  res.send("Hello welcome to my heroku about page")
-})
+// app.get("/",(req,res)=>{
+//    res.send("Hello welcome to my heroku page")
+// })
+// app.get("/home",(req,res)=>{
+//   res.send("Hello welcome to my heroku home page")
+// })
+// app.get("/about",(req,res)=>{
+//   res.send("Hello welcome to my heroku about page")
+// })
 
-// app.use("/api/v1",register)
-// app.use("/api/v1",login)
-// app.use("/api/v1",topics)
-// app.use("/api/v1",result)
+app.use("/api/v1",register)
+app.use("/api/v1",login)
+app.use("/api/v1",topics)
+app.use("/api/v1",result)
 
 
 
